@@ -162,9 +162,9 @@ class ListMakerTest {
         persons.add(person7);
 
         // Act
-        List<Person> maleAdultList = listMaker.createOtherwiseAdultList(persons);
+        List<Person> otherwiseAdultList = listMaker.createOtherwiseAdultList(persons);
 
         // Assert
-        assertEquals(1, maleAdultList.size());
+        assertEquals(1, otherwiseAdultList.size());
     }
 }
