@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class ListMakerTest {
 
     private ListMaker listMaker;
@@ -30,7 +32,7 @@ class ListMakerTest {
         List<Person> femaleMaleAdultList = listMaker.createFemaleAdultList(null);
 
         // Assert
-        Assertions.assertEquals(0, femaleMaleAdultList.size());
+        assertEquals(0, femaleMaleAdultList.size());
     }
 
     @Test
@@ -41,28 +43,33 @@ class ListMakerTest {
         List<Person> femaleMaleAdultList = listMaker.createFemaleAdultList(persons);
 
         // Assert
-        Assertions.assertEquals(0, femaleMaleAdultList.size());
+        assertEquals(0, femaleMaleAdultList.size());
     }
 
     @Test
-    void testAdultFemaleList() {
+    void testCreateFemaleAdultListAddsOnlyAdultFemaleToTheList() {
         // Arrange
-        Person person1 = PersonBuilder.aPerson().withFirstName("A").withLastName("A").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(20)).build();
-        Person person2 = PersonBuilder.aPerson().withFirstName("B").withLastName("B").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(30)).build();
-        Person person3 = PersonBuilder.aPerson().withFirstName("C").withLastName("C").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(40)).build();
-        Person person4 = PersonBuilder.aPerson().withFirstName("D").withLastName("D").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(10)).build();
-        Person person5 = PersonBuilder.aPerson().withFirstName("E").withLastName("E").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(18)).build();
+        var person1 = PersonBuilder.aPerson().withFirstName("A").withLastName("A").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(23)).build();
+        var person2 = PersonBuilder.aPerson().withFirstName("B").withLastName("B").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(33)).build();
+        var person3 = PersonBuilder.aPerson().withFirstName("C").withLastName("C").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(10)).build();
+        var person4 = PersonBuilder.aPerson().withFirstName("D").withLastName("D").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(13)).build();
+        var person5 = PersonBuilder.aPerson().withFirstName("E").withLastName("E").withGender(Gender.OTHERWISE).withBirthDate(LocalDate.now().minusYears(11)).build();
+        var person6 = PersonBuilder.aPerson().withFirstName("F").withLastName("F").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(18)).build();
+        var person7 = PersonBuilder.aPerson().withFirstName("G").withLastName("G").withGender(Gender.OTHERWISE).withBirthDate(LocalDate.now().minusYears(18)).build();
 
         persons.add(person1);
         persons.add(person2);
         persons.add(person3);
         persons.add(person4);
         persons.add(person5);
+        persons.add(person6);
+        persons.add(person7);
+
         // Act
         List<Person> femaleMaleAdultList = listMaker.createFemaleAdultList(persons);
 
         // Assert
-        Assertions.assertEquals(2, femaleMaleAdultList.size());
+        assertEquals(1, femaleMaleAdultList.size());
     }
 
     @Test
@@ -73,7 +80,7 @@ class ListMakerTest {
         List<Person> maleMaleAdultList = listMaker.createMaleAdultList(null);
 
         // Assert
-        Assertions.assertEquals(0, maleMaleAdultList.size());
+        assertEquals(0, maleMaleAdultList.size());
     }
 
     @Test
@@ -84,27 +91,80 @@ class ListMakerTest {
         List<Person> maleMaleAdultList = listMaker.createMaleAdultList(persons);
 
         // Assert
-        Assertions.assertEquals(0, maleMaleAdultList.size());
+        assertEquals(0, maleMaleAdultList.size());
     }
 
     @Test
-    void testAdultMaleList() {
+    void testCreateMaleAdultListAddsOnlyAdultMaleToTheList() {
         // Arrange
-        Person person1 = PersonBuilder.aPerson().withFirstName("A").withLastName("A").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(23)).build();
-        Person person2 = PersonBuilder.aPerson().withFirstName("B").withLastName("B").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(33)).build();
-        Person person3 = PersonBuilder.aPerson().withFirstName("C").withLastName("C").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(10)).build();
-        Person person4 = PersonBuilder.aPerson().withFirstName("D").withLastName("D").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(13)).build();
-        Person person5 = PersonBuilder.aPerson().withFirstName("E").withLastName("E").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(15)).build();
+        var person1 = PersonBuilder.aPerson().withFirstName("A").withLastName("A").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(23)).build();
+        var person2 = PersonBuilder.aPerson().withFirstName("B").withLastName("B").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(33)).build();
+        var person3 = PersonBuilder.aPerson().withFirstName("C").withLastName("C").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(10)).build();
+        var person4 = PersonBuilder.aPerson().withFirstName("D").withLastName("D").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(13)).build();
+        var person5 = PersonBuilder.aPerson().withFirstName("E").withLastName("E").withGender(Gender.OTHERWISE).withBirthDate(LocalDate.now().minusYears(11)).build();
+        var person6 = PersonBuilder.aPerson().withFirstName("F").withLastName("F").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(18)).build();
+        var person7 = PersonBuilder.aPerson().withFirstName("G").withLastName("G").withGender(Gender.OTHERWISE).withBirthDate(LocalDate.now().minusYears(18)).build();
 
         persons.add(person1);
         persons.add(person2);
         persons.add(person3);
         persons.add(person4);
         persons.add(person5);
+        persons.add(person6);
+        persons.add(person7);
+
         // Act
         List<Person> maleAdultList = listMaker.createMaleAdultList(persons);
 
         // Assert
-        Assertions.assertEquals(1, maleAdultList.size());
+        assertEquals(2, maleAdultList.size());
+    }
+
+    @Test
+    void testCreateOtherwiseAdultListCreatesEmptyListIfParameterIsNull() {
+        // Arrange
+
+        // Act
+        List<Person> maleMaleAdultList = listMaker.createOtherwiseAdultList(null);
+
+        // Assert
+        assertEquals(0, maleMaleAdultList.size());
+    }
+
+    @Test
+    void testCreateOtherwiseAdultListCreatesEmptyListIfParameterIsEmpty() {
+        // Arrange
+
+        // Act
+        List<Person> maleMaleAdultList = listMaker.createOtherwiseAdultList(persons);
+
+        // Assert
+        assertEquals(0, maleMaleAdultList.size());
+    }
+
+    @Test
+    void testCreateOtherwiseAdultListAddsOnlyAdultOtherwiseToTheList() {
+        // Arrange
+        var person1 = PersonBuilder.aPerson().withFirstName("A").withLastName("A").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(23)).build();
+        var person2 = PersonBuilder.aPerson().withFirstName("B").withLastName("B").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(33)).build();
+        var person3 = PersonBuilder.aPerson().withFirstName("C").withLastName("C").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(10)).build();
+        var person4 = PersonBuilder.aPerson().withFirstName("D").withLastName("D").withGender(Gender.FEMALE).withBirthDate(LocalDate.now().minusYears(13)).build();
+        var person5 = PersonBuilder.aPerson().withFirstName("E").withLastName("E").withGender(Gender.OTHERWISE).withBirthDate(LocalDate.now().minusYears(11)).build();
+        var person6 = PersonBuilder.aPerson().withFirstName("F").withLastName("F").withGender(Gender.MALE).withBirthDate(LocalDate.now().minusYears(18)).build();
+        var person7 = PersonBuilder.aPerson().withFirstName("G").withLastName("G").withGender(Gender.OTHERWISE).withBirthDate(LocalDate.now().minusYears(18)).build();
+
+        persons.add(person1);
+        persons.add(person2);
+        persons.add(person3);
+        persons.add(person4);
+        persons.add(person5);
+        persons.add(person6);
+        persons.add(person7);
+
+        // Act
+        List<Person> maleAdultList = listMaker.createOtherwiseAdultList(persons);
+
+        // Assert
+        assertEquals(1, maleAdultList.size());
     }
 }
