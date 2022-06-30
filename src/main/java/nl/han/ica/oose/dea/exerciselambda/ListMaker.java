@@ -15,25 +15,36 @@ public class ListMaker {
     private final Predicate<Person> isAdult = (person) -> person.isAdult(ADULT_AGE);
     private final Predicate<Person> isMale = (person) -> person.isOfGender(Gender.MALE);
     private final Predicate<Person> isFemale = (person) -> person.isOfGender(Gender.FEMALE);
+    private final Predicate<Person> isOtherwise = (person) -> person.isOfGender(Gender.OTHERWISE);
 
     /**
-     * Create a {@link List} containing only the Persons that are both male and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#MALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both male and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#MALE} and are adult
      */
     public List<Person> createMaleAdultList(List<Person> allPersons) {
         return createAdultList(allPersons, isMale);
     }
 
     /**
-     * Create a {@link List} containing only the Persons that are both female and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#FEMALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both female and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#FEMALE} and are adult
      */
     public List<Person> createFemaleAdultList(List<Person> allPersons) {
         return createAdultList(allPersons, isFemale);
+    }
+
+    /**
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#OTHERWISE} and are adult.
+     *
+     * @param allPersons A {@link List} of {@link Person} Objects
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#OTHERWISE} and are adult
+     */
+    public List<Person> createOtherwiseAdultList(List<Person> allPersons) {
+        return createAdultList(allPersons, isOtherwise);
     }
 
     private List<Person> createAdultList(List<Person> allPersons, Predicate<Person> byGender) {
