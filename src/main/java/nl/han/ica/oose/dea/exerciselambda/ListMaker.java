@@ -92,7 +92,7 @@ public class ListMaker {
         var now = LocalDate.now();
         var age = Period.between(person.getBirthDate(), now);
 
-        return age.getYears() > ADULT_AGE;
+        return age.getYears() >= ADULT_AGE;
     }
 
 }
