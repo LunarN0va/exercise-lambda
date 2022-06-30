@@ -11,23 +11,33 @@ public class ListMaker {
     private static final int ADULT_AGE = 18;
 
     /**
-     * Create a {@link List} containing only the Persons that are both male and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#MALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both male and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#MALE} and are adult
      */
     public List<Person> createMaleAdultList(List<Person> allPersons) {
         return createAdultList(allPersons, Gender.MALE);
     }
 
     /**
-     * Create a {@link List} containing only the Persons that are both female and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#FEMALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both female and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#FEMALE} and are adult
      */
     public List<Person> createFemaleAdultList(List<Person> allPersons) {
         return createAdultList(allPersons, Gender.FEMALE);
+    }
+
+    /**
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#OTHERWISE} and are adult.
+     *
+     * @param allPersons A {@link List} of {@link Person} Objects
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#OTHERWISE} and are adult
+     */
+    public List<Person> createOtherwiseAdultList(List<Person> allPersons) {
+        return createAdultList(allPersons, Gender.OTHERWISE);
     }
 
     private List<Person> createAdultList(List<Person> allPersons, Gender gender) {
