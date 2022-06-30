@@ -3,7 +3,6 @@ package nl.han.ica.oose.dea.exerciselambda;
 import nl.han.ica.oose.dea.exerciselambda.builders.PersonBuilder;
 import nl.han.ica.oose.dea.exerciselambda.person.Gender;
 import nl.han.ica.oose.dea.exerciselambda.person.Person;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,10 +28,10 @@ class ListMakerTest {
         // Arrange
 
         // Act
-        List<Person> femaleMaleAdultList = listMaker.createFemaleAdultList(null);
+        List<Person> femaleAdultList = listMaker.createFemaleAdultList(null);
 
         // Assert
-        assertEquals(0, femaleMaleAdultList.size());
+        assertEquals(0, femaleAdultList.size());
     }
 
     @Test
@@ -40,10 +39,10 @@ class ListMakerTest {
         // Arrange
 
         // Act
-        List<Person> femaleMaleAdultList = listMaker.createFemaleAdultList(persons);
+        List<Person> femaleAdultList = listMaker.createFemaleAdultList(persons);
 
         // Assert
-        assertEquals(0, femaleMaleAdultList.size());
+        assertEquals(0, femaleAdultList.size());
     }
 
     @Test
@@ -66,10 +65,10 @@ class ListMakerTest {
         persons.add(person7);
 
         // Act
-        List<Person> femaleMaleAdultList = listMaker.createFemaleAdultList(persons);
+        List<Person> femaleAdultList = listMaker.createFemaleAdultList(persons);
 
         // Assert
-        assertEquals(1, femaleMaleAdultList.size());
+        assertEquals(1, femaleAdultList.size());
     }
 
     @Test
@@ -77,10 +76,10 @@ class ListMakerTest {
         // Arrange
 
         // Act
-        List<Person> maleMaleAdultList = listMaker.createMaleAdultList(null);
+        List<Person> maleAdultList = listMaker.createMaleAdultList(null);
 
         // Assert
-        assertEquals(0, maleMaleAdultList.size());
+        assertEquals(0, maleAdultList.size());
     }
 
     @Test
@@ -88,10 +87,10 @@ class ListMakerTest {
         // Arrange
 
         // Act
-        List<Person> maleMaleAdultList = listMaker.createMaleAdultList(persons);
+        List<Person> maleAdultList = listMaker.createMaleAdultList(persons);
 
         // Assert
-        assertEquals(0, maleMaleAdultList.size());
+        assertEquals(0, maleAdultList.size());
     }
 
     @Test
@@ -125,10 +124,10 @@ class ListMakerTest {
         // Arrange
 
         // Act
-        List<Person> maleMaleAdultList = listMaker.createOtherwiseAdultList(null);
+        List<Person> otherwiseAdultList = listMaker.createOtherwiseAdultList(null);
 
         // Assert
-        assertEquals(0, maleMaleAdultList.size());
+        assertEquals(0, otherwiseAdultList.size());
     }
 
     @Test
@@ -136,10 +135,10 @@ class ListMakerTest {
         // Arrange
 
         // Act
-        List<Person> maleMaleAdultList = listMaker.createOtherwiseAdultList(persons);
+        List<Person> otherwiseAdultList = listMaker.createOtherwiseAdultList(persons);
 
         // Assert
-        assertEquals(0, maleMaleAdultList.size());
+        assertEquals(0, otherwiseAdultList.size());
     }
 
     @Test
