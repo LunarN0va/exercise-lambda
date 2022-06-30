@@ -13,10 +13,10 @@ public class ListMaker {
     public static final int ADULT_AGE = 18;
 
     /**
-     * Create a {@link List} containing only the Persons that are both male and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#MALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both male and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#MALE} and are adult
      */
     public List<Person> createMaleAdultList(List<Person> allPersons) {
 
@@ -26,7 +26,7 @@ public class ListMaker {
 
         List<Person> filteredMaleAdults = new ArrayList<>();
 
-        for (Person person : allPersons) {
+        for (var person : allPersons) {
             if (person.isOfGender(Gender.MALE) && person.isAdult(ADULT_AGE)) {
                 filteredMaleAdults.add(person);
             }
@@ -36,10 +36,10 @@ public class ListMaker {
     }
 
     /**
-     * Create a {@link List} containing only the Persons that are both female and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#FEMALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both female and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#FEMALE} and are adult
      */
     public List<Person> createFemaleAdultList(List<Person> allPersons) {
 
@@ -49,7 +49,7 @@ public class ListMaker {
 
         List<Person> filteredFemmaleAdults = new ArrayList<>();
 
-        for (Person person : allPersons) {
+        for (var person : allPersons) {
             if (person.isOfGender(Gender.FEMALE) && person.isAdult(ADULT_AGE)) {
 
                 filteredFemmaleAdults.add(person);
@@ -57,5 +57,29 @@ public class ListMaker {
         }
 
         return filteredFemmaleAdults;
+    }
+
+    /**
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#OTHERWISE} and are adult.
+     *
+     * @param allPersons A {@link List} of {@link Person} Objects
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#OTHERWISE} and are adult
+     */
+    public List<Person> createOtherwiseAdultList(List<Person> allPersons) {
+
+        if (allPersons == null) {
+            return new ArrayList<>();
+        }
+
+        List<Person> filteredOtherwiseAdults = new ArrayList<>();
+
+        for (Person person : allPersons) {
+            if (person.isOfGender(Gender.OTHERWISE) && person.isAdult(ADULT_AGE)) {
+
+                filteredOtherwiseAdults.add(person);
+            }
+        }
+
+        return filteredOtherwiseAdults;
     }
 }
