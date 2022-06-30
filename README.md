@@ -22,14 +22,14 @@ De huidige codebase bevat een Magic Number. Vervang deze door een constante.
 ## 2 Remove Duplicate Code/Extract Method
 
 Merk op dat de methodes `createMaleAdultList()`, `createFemaleAdultList()`
-en `createOtherwiseAdultList()` uit `ListMaker` duplicate code bevatten. 
-Deze code bevat feitelijk twee checks:
+en `createOtherwiseAdultList()` uit `ListMaker` duplicate code bevatten. Deze
+code bevat feitelijk twee checks:
 
 * Of een persoon ouder dan 18 is
 * Of een persoon MALE/FEMALE/OTHERWISE is
 
 Creëer voor beide checks een methode die de check uitvoert en roep deze aan
-vanuit `createMaleAdultList()`, `createFemaleAdultList()` en 
+vanuit `createMaleAdultList()`, `createFemaleAdultList()` en
 `createOtherwiseAdultList()`.
 
 *Run de Unittests om er zeker van te zijn dat alles nog werkt.*
@@ -44,12 +44,12 @@ klasse waar ze thuishoren.
 
 ## 4 Remove Duplicate Code/Extract Method
 
-Ondanks de verbeteringen bevatten `createMaleAdultList()`, 
-`createFemaleAdultList()` en `createOtherwiseAdultList()` nog steeds duplicate 
-code. Creëer een private
-methode, genaamd `createAdultList(List<Person> allPerson, Gender gender)`, die
-als tweede parameter de `Gender` krijgt waarvoor deze een lijst moet maken. Roep
-deze methode vervolgens vanuit `createMaleAdultList()`, `createFemaleAdultList
+Ondanks de verbeteringen bevatten `createMaleAdultList()`,
+`createFemaleAdultList()` en `createOtherwiseAdultList()` nog steeds duplicate
+code. Creëer een private methode,
+genaamd `createAdultList(List<Person> allPerson, Gender gender)`, die als tweede
+parameter de `Gender` krijgt waarvoor deze een lijst moet maken. Roep deze
+methode vervolgens vanuit `createMaleAdultList()`, `createFemaleAdultList
 ()` en `createOtherwiseAdultList()` aan.
 
 *Run de Unittests om er zeker van te zijn dat alles nog werkt.*
@@ -92,13 +92,13 @@ de `Collectors.toList()` om een gefilterde lijst te maken die nu enkel `Person`
 
 *Run de Unittests om er zeker van te zijn dat alles nog werkt.*
 
-## 7 Toevoegen Lambda expressies voor de MALE/FEMALE check
+## 7 Toevoegen Lambda expressies voor de MALE/FEMALE/OTHERWISE check
 
 Gebruik de kennis van onderdeel 6 voor het maken van een `Predicate` die bepaalt
-of een `Person` `MALE`, `FEMALE` of `OTHERWISE` is. Deze is wat lastiger, 
-aangezien je in Oefening 4 de `Gender` als parameter hebt toegevoegd en je daarmee eigenlijk
-twee parameters (de `Gender` en de `Person`) aan je `Predicate` moet meegeven.
-Dit staat de Interface van `Predicate` echter niet toe. Er zijn dan ook
-verschillende manieren dit op te lossen; het is aan jou!
+of een `Person` `MALE`, `FEMALE` of `OTHERWISE` is. Deze is wat lastiger,
+aangezien je in Oefening 4 de `Gender` als parameter hebt toegevoegd en je
+daarmee eigenlijk twee parameters (de `Gender` en de `Person`) aan
+je `Predicate` moet meegeven. Dit staat de Interface van `Predicate` echter niet
+toe. Er zijn dan ook verschillende manieren dit op te lossen; het is aan jou!
 
 *Run de Unittests om er zeker van te zijn dat alles nog werkt.*
