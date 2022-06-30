@@ -79,7 +79,7 @@ public class ListMaker {
             return new ArrayList<>();
         }
 
-        List<Person> filteredMaleAdults = new ArrayList<>();
+        List<Person> filteredOtherwiseAdults = new ArrayList<>();
 
         for (Person person : allPersons) {
             if (person.getGender().equals(Gender.OTHERWISE)) {
@@ -87,12 +87,12 @@ public class ListMaker {
                 var age = Period.between(person.getBirthDate(), now);
 
                 if (age.getYears() >= 18) {
-                    filteredMaleAdults.add(person);
+                    filteredOtherwiseAdults.add(person);
                 }
 
             }
         }
 
-        return filteredMaleAdults;
+        return filteredOtherwiseAdults;
     }
 }
