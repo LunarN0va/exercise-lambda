@@ -11,10 +11,10 @@ import java.util.List;
 public class ListMaker {
 
     /**
-     * Create a {@link List} containing only the Persons that are both male and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#MALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both male and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#MALE} and are adult
      */
     public List<Person> createMaleAdultList(List<Person> allPersons) {
 
@@ -26,8 +26,8 @@ public class ListMaker {
 
         for (Person person : allPersons) {
             if (person.getGender().equals(Gender.MALE)) {
-                LocalDate now = LocalDate.now();
-                Period age = Period.between(person.getBirthDate(), now);
+                var now = LocalDate.now();
+                var age = Period.between(person.getBirthDate(), now);
 
                 if (age.getYears() >= 18) {
                     filteredMaleAdults.add(person);
@@ -40,10 +40,10 @@ public class ListMaker {
     }
 
     /**
-     * Create a {@link List} containing only the Persons that are both female and adult.
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#FEMALE} and are adult.
      *
      * @param allPersons A {@link List} of {@link Person} Objects
-     * @return A {@link List} containing only the Persons that are both female and adult
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#FEMALE} and are adult
      */
     public List<Person> createFemaleAdultList(List<Person> allPersons) {
 
@@ -55,8 +55,8 @@ public class ListMaker {
 
         for (Person person : allPersons) {
             if (person.getGender().equals(Gender.FEMALE)) {
-                LocalDate now = LocalDate.now();
-                Period age = Period.between(person.getBirthDate(), now);
+                var now = LocalDate.now();
+                var age = Period.between(person.getBirthDate(), now);
 
                 if (age.getYears() >= 18) {
                     filteredFemaleAdults.add(person);
@@ -64,8 +64,35 @@ public class ListMaker {
             }
         }
 
-
         return filteredFemaleAdults;
     }
 
+    /**
+     * Create a {@link List} containing only the Persons that have gender {@link Gender#OTHERWISE} and are adult.
+     *
+     * @param allPersons A {@link List} of {@link Person} Objects
+     * @return A {@link List} containing only instance of {@code Person} that have gender {@link Gender#OTHERWISE} and are adult
+     */
+    public List<Person> createOtherwiseAdultList(List<Person> allPersons) {
+
+        if (allPersons == null) {
+            return new ArrayList<>();
+        }
+
+        List<Person> filteredMaleAdults = new ArrayList<>();
+
+        for (Person person : allPersons) {
+            if (person.getGender().equals(Gender.OTHERWISE)) {
+                var now = LocalDate.now();
+                var age = Period.between(person.getBirthDate(), now);
+
+                if (age.getYears() >= 18) {
+                    filteredMaleAdults.add(person);
+                }
+
+            }
+        }
+
+        return filteredMaleAdults;
+    }
 }
